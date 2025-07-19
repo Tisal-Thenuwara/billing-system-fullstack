@@ -1,5 +1,6 @@
 package com.base.billing.ms.model.dto;
 
+import lombok.Data;
 import lombok.Value;
 
 import java.io.Serializable;
@@ -8,7 +9,8 @@ import java.io.Serializable;
  * DTO for {@link com.base.billing.ms.model.dao.User}
  */
 @Value
+@Data
 public class UserDto implements Serializable {
 	String username;
-	String password;
+	String role;
 }

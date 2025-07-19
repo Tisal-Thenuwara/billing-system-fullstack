@@ -7,10 +7,17 @@ import lombok.Data;
 @Entity
 @Data
 public class Item {
+
 	@Id
 	private String itemCode;
 
-	private String name;
+	private String itemName;
+
 	private double pricePerUnit;
+
 	private int quantity;
+
+	private String description;
+
+	private String status;
 }
