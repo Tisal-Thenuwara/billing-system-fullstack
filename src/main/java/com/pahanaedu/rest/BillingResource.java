@@ -17,7 +17,7 @@ public class BillingResource {
     public Response bill(@PathParam("accountNo") int accountNo) {
         Bill bill = billingService.generateBill(accountNo);
         if (bill == null) return Response.status(Response.Status.NOT_FOUND)
-                .entity("{"error":"Customer not found"}")
+                .entity("{error:Customer not found}")
                 .build();
         return Response.ok(bill).build();
     }

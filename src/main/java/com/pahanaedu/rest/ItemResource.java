@@ -19,7 +19,7 @@ public class ItemResource {
         boolean ok = dao.add(it);
         if (ok) return Response.ok(it).build();
         return Response.status(Response.Status.BAD_REQUEST)
-                .entity("{"error":"Could not add item"}")
+                .entity("{error:Could not add item}")
                 .build();
     }
 
@@ -30,7 +30,7 @@ public class ItemResource {
         boolean ok = dao.update(it);
         if (ok) return Response.ok(it).build();
         return Response.status(Response.Status.BAD_REQUEST)
-                .entity("{"error":"Could not update item"}")
+                .entity("{error:Could not update item}")
                 .build();
     }
 
@@ -38,9 +38,9 @@ public class ItemResource {
     @Path("/{id}")
     public Response delete(@PathParam("id") int id) {
         boolean ok = dao.delete(id);
-        if (ok) return Response.ok("{"message":"Deleted"}").build();
+        if (ok) return Response.ok("{message:Deleted}").build();
         return Response.status(Response.Status.BAD_REQUEST)
-                .entity("{"error":"Could not delete item"}")
+                .entity("{error:Could not delete item}")
                 .build();
     }
 
@@ -49,7 +49,7 @@ public class ItemResource {
     public Response get(@PathParam("id") int id) {
         Item it = dao.get(id);
         if (it == null) return Response.status(Response.Status.NOT_FOUND)
-                .entity("{"error":"Not found"}").build();
+                .entity("{error:Not found}").build();
         return Response.ok(it).build();
     }
 
