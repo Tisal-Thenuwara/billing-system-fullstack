@@ -1,37 +1,54 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Customers - Pahana Edu</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <style>
-    body { font-family: Arial, sans-serif; margin: 2rem; }
-    input, button { padding: .5rem; margin: .3rem; }
-    table { border-collapse: collapse; width: 100%; margin-top: 1rem;}
-    th, td { border: 1px solid #ddd; padding: .5rem; text-align: left;}
-    .row { display:flex; flex-wrap: wrap; gap: .5rem; }
-  </style>
+  <meta charset="UTF-8">
+  <title>Customer Management</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<h2>Customer Management</h2>
+<button class="back-btn" onclick="location.href='dashboard.html'">← Back</button>
+<div class="card">
+  <h2>Customer Management</h2>
 
-<div class="row">
-  <input id="acc" type="number" placeholder="Account No"/>
-  <input id="name" type="text" placeholder="Name"/>
-  <input id="addr" type="text" placeholder="Address"/>
-  <input id="phone" type="text" placeholder="Phone"/>
-  <input id="units" type="number" placeholder="Units"/>
-  <button onclick="add()">Add</button>
-  <button onclick="update()">Update</button>
+  <!-- Add Customer Form -->
+  <form>
+    <input type="text" placeholder="Account Number" required>
+    <input type="text" placeholder="Name" required>
+    <input type="text" placeholder="Address" required>
+    <input type="text" placeholder="Telephone" required>
+    <button type="submit">Add Customer</button>
+  </form>
+
+  <hr>
+
+  <!-- Customer Table -->
+  <table>
+    <thead>
+    <tr>
+      <th>Account No</th>
+      <th>Name</th>
+      <th>Address</th>
+      <th>Telephone</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>C001</td>
+      <td>John Doe</td>
+      <td>Colombo</td>
+      <td>0771234567</td>
+      <td>
+        <button>Edit</button>
+        <button>Delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
 </div>
 
-<button onclick="loadList()">Refresh List</button>
-
-<table id="tbl">
-  <thead><tr><th>Account</th><th>Name</th><th>Address</th><th>Phone</th><th>Units</th><th>Bill</th></tr></thead>
-  <tbody></tbody>
-</table>
-
+<%--<button onclick="add()">Add</button>--%>
 <script>
 async function add(){
   const payload = {accountNo:+acc.value, name:name.value, address:addr.value, phone:phone.value, unitsConsumed:+units.value};

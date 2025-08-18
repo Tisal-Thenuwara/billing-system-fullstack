@@ -10,13 +10,15 @@ import java.util.List;
 public class CustomerDAO {
 
     public boolean add(Customer c) {
-        String sql = "INSERT INTO customers(account_no,name,address,phone,units_consumed) VALUES(?,?,?,?,?)";
+        String sql = "INSERT INTO customers(account_no,name,address1, address2, phone, email, units_consumed) VALUES(?,?,?,?,?)";
         try (Connection con = DBUtil.getConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setInt(1, c.getAccountNo());
             ps.setString(2, c.getName());
-            ps.setString(3, c.getAddress());
+            ps.setString(3, c.getAddress1());
+            ps.setString(3, c.getAddress2());
             ps.setString(4, c.getPhone());
+            ps.setString(3, c.getEmail());
             ps.setInt(5, c.getUnitsConsumed());
             return ps.executeUpdate() == 1;
         } catch (SQLException e) {
@@ -26,7 +28,7 @@ public class CustomerDAO {
     }
 
     public Customer get(int accountNo) {
-        String sql = "SELECT account_no,name,address,phone,units_consumed FROM customers WHERE account_no=?";
+        String sql = "SELECT account_no,name,address1, address2, phone, email, units_consumed FROM customers WHERE account_no=?";
         try (Connection con = DBUtil.getConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setInt(1, accountNo);
@@ -35,8 +37,10 @@ public class CustomerDAO {
                 return new Customer(
                         rs.getInt("account_no"),
                         rs.getString("name"),
-                        rs.getString("address"),
+                        rs.getString("address1"),
+                        rs.getString("address2"),
                         rs.getString("phone"),
+                        rs.getString("email"),
                         rs.getInt("units_consumed")
                 );
             }
@@ -47,12 +51,14 @@ public class CustomerDAO {
     }
 
     public boolean update(Customer c) {
-        String sql = "UPDATE customers SET name=?, address=?, phone=?, units_consumed=? WHERE account_no=?";
+        String sql = "UPDATE customers SET name=?, address1=?, address2=?, phone=?, email=?, units_consumed=? WHERE account_no=?";
         try (Connection con = DBUtil.getConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setString(1, c.getName());
-            ps.setString(2, c.getAddress());
+            ps.setString(2, c.getAddress1());
+            ps.setString(2, c.getAddress2());
             ps.setString(3, c.getPhone());
+            ps.setString(2, c.getEmail());
             ps.setInt(4, c.getUnitsConsumed());
             ps.setInt(5, c.getAccountNo());
             return ps.executeUpdate() == 1;
@@ -63,7 +69,7 @@ public class CustomerDAO {
     }
 
     public List<Customer> listAll() {
-        String sql = "SELECT account_no,name,address,phone,units_consumed FROM customers ORDER BY account_no";
+        String sql = "SELECT account_no,name,address1,address2,phone,email,units_consumed FROM customers ORDER BY account_no";
         List<Customer> out = new ArrayList<>();
         try (Connection con = DBUtil.getConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {
@@ -72,8 +78,10 @@ public class CustomerDAO {
                 out.add(new Customer(
                         rs.getInt("account_no"),
                         rs.getString("name"),
-                        rs.getString("address"),
+                        rs.getString("address1"),
+                        rs.getString("address2"),
                         rs.getString("phone"),
+                        rs.getString("email"),
                         rs.getInt("units_consumed")
                 ));
             }
