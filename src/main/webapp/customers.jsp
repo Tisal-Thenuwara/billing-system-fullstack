@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<button class="back-btn" onclick="location.href='dashboard.html'">← Back</button>
+<button class="back-btn" onclick="location.href='dashboard.jsp'">← Back</button>
 <div class="card">
   <h2>Customer Management</h2>
 
@@ -52,22 +52,22 @@
 <script>
 async function add(){
   const payload = {accountNo:+acc.value, name:name.value, address:addr.value, phone:phone.value, unitsConsumed:+units.value};
-  const res = await fetch('api/customers', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload)});
+  const res = await fetch('<%= request.getContextPath() %>/api/customers', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload)});
   alert(await res.text());
   loadList();
 }
 async function update(){
   const payload = {name:name.value, address:addr.value, phone:phone.value, unitsConsumed:+units.value};
-  const res = await fetch('api/customers/'+acc.value, {method:'PUT', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload)});
+  const res = await fetch('<%= request.getContextPath() %>/api/customers/'+acc.value, {method:'PUT', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload)});
   alert(await res.text());
   loadList();
 }
 async function bill(accountNo){
-  const res = await fetch('api/billing/'+accountNo);
+  const res = await fetch('<%= request.getContextPath() %>/api/billing/'+accountNo);
   alert(await res.text());
 }
 async function loadList(){
-  const res = await fetch('api/customers');
+  const res = await fetch('<%= request.getContextPath() %>/api/customers');
   const data = await res.json();
   const tbody = document.querySelector('#tbl tbody');
   tbody.innerHTML = '';

@@ -25,6 +25,13 @@ public class DBUtil implements ServletContextListener {
                 ctx.getInitParameter("DB_USER"));
         pass = System.getenv().getOrDefault("PAHANA_DB_PASS",
                 ctx.getInitParameter("DB_PASS"));
+
+        try {
+            // Explicitly registering the MySQL driver
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            throw new IllegalStateException("MySQL Driver not found", e);
+        }
     }
 
     public static Connection getConnection() throws SQLException {

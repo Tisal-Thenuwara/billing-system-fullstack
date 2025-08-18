@@ -6,7 +6,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<button class="back-btn" onclick="location.href='dashboard.html'">← Back</button>
+<button class="back-btn" onclick="location.href='dashboard.jsp'">← Back</button>
 <div class="card">
   <h2>Help & Guidelines</h2>
   <p>✔ Login using your username & password</p>

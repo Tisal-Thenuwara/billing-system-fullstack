@@ -17,9 +17,9 @@
   <div class="card">
     <h2>Welcome, User</h2>
     <div class="tile-container">
-      <div class="tile" onclick="location.href='customers.html'">Customers</div>
-      <div class="tile" onclick="location.href='items.html'">Items</div>
-      <div class="tile" onclick="location.href='help.html'">Help</div>
+      <div class="tile" onclick="location.href='customers.jsp'">Customers</div>
+      <div class="tile" onclick="location.href='items.jsp'">Items</div>
+      <div class="tile" onclick="location.href='help.jsp'">Help</div>
     </div>
     <br>
     <button class="back-btn" onclick="location.href='login.html'">Logout</button>

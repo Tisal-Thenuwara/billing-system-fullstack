@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: USER
-  Date: 18/08/2025
-  Time: 10:43 am
-  To change this template use File | Settings | File Templates.
---%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,14 +7,40 @@
 </head>
 <body>
 <div class="container">
-  <div class="card">
+<div class="card">
     <h2>Pahana Edu Login</h2>
-    <form action="dashboard.html" method="post">
-      <input type="text" placeholder="Username" required>
-      <input type="password" placeholder="Password" required>
-      <button type="submit">Login</button>
+    <form id="loginForm">
+      <input type="text" placeholder="Username" name="username" id="username" required>
+      <input type="password" placeholder="Password" name="password" id="password" required>
+      <button type="button" id="loginButton">Login</button>
     </form>
-  </div>
+</div>
+
+<script>
+document.getElementById("loginButton").addEventListener("click", async function () {
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+
+    const response = await fetch("<%= request.getContextPath() %>/api/auth/login", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ username, password })
+    });
+
+    if (response.ok) {
+        const data = await response.json();
+        alert(data.message);
+        
+        // Redirect to the dashboard
+        window.location.href = "<%= request.getContextPath() %>/dashboard.jsp";
+    } else {
+        const error = await response.json();
+        alert(error.error);
+    }
+});
+</script>
 </div>
 </body>
 </html>

@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<button class="back-btn" onclick="location.href='dashboard.html'">← Back</button>
+<button class="back-btn" onclick="location.href='dashboard.jsp'">← Back</button>
 <div class="card">
   <h2>Item Management</h2>
 
@@ -48,20 +48,20 @@
 <script>
 async function add(){
   const payload = {itemName:name.value, pricePerUnit:+price.value};
-  const res = await fetch('api/items', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload)});
+  const res = await fetch('<%= request.getContextPath() %>/api/items', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload)});
   alert(await res.text()); loadList();
 }
 async function update(){
   const payload = {itemName:name.value, pricePerUnit:+price.value};
-  const res = await fetch('api/items/'+id.value, {method:'PUT', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload)});
+  const res = await fetch('<%= request.getContextPath() %>/api/items/'+id.value, {method:'PUT', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload)});
   alert(await res.text()); loadList();
 }
 async function del(){
-  const res = await fetch('api/items/'+id.value, {method:'DELETE'});
+  const res = await fetch('<%= request.getContextPath() %>/api/items/'+id.value, {method:'DELETE'});
   alert(await res.text()); loadList();
 }
 async function loadList(){
-  const res = await fetch('api/items');
+  const res = await fetch('<%= request.getContextPath() %>/api/items');
   const data = await res.json();
   const tbody = document.querySelector('#tbl tbody');
   tbody.innerHTML = '';
