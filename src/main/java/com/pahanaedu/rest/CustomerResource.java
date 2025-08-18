@@ -20,7 +20,7 @@ public class CustomerResource {
         boolean ok = dao.add(c);
         if (ok) return Response.ok(c).build();
         return Response.status(Response.Status.BAD_REQUEST)
-                .entity("{"error":"Could not add customer"}")
+                .entity("{error:Could not add customer}")
                 .build();
     }
 
@@ -29,7 +29,7 @@ public class CustomerResource {
     public Response get(@PathParam("accountNo") int accountNo) {
         Customer c = dao.get(accountNo);
         if (c == null) return Response.status(Response.Status.NOT_FOUND)
-                .entity("{"error":"Not found"}")
+                .entity("{error:Not found}")
                 .build();
         return Response.ok(c).build();
     }
@@ -41,7 +41,7 @@ public class CustomerResource {
         boolean ok = dao.update(c);
         if (ok) return Response.ok(c).build();
         return Response.status(Response.Status.BAD_REQUEST)
-                .entity("{"error":"Could not update customer"}")
+                .entity("{error:Could not update customer}")
                 .build();
     }
 

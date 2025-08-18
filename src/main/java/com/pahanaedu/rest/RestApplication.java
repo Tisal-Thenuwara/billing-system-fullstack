@@ -1,9 +1,8 @@
-package com.pahanaedu.rest;
-
-import jakarta.ws.rs.ApplicationPath;
-import jakarta.ws.rs.core.Application;
-
-@ApplicationPath("/api")
-public class RestApplication extends Application {
-    // Empty on purpose; the annotations activate JAX-RS
-}
+//package com.pahanaedu.rest;
+//
+//import jakarta.ws.rs.ApplicationPath;
+//import jakarta.ws.rs.core.Application;
+//
+//@ApplicationPath("/api")
+//public class RestApplication extends Application {
+//}

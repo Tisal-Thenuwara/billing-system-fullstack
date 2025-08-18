@@ -31,9 +31,9 @@
     <dependency>
       <groupId>com.mysql</groupId>
       <artifactId>mysql-connector-j</artifactId>
-      <version>${mysql.version}</version>
-      <scope>runtime</scope>
+      <version>8.0.33</version> <!-- Ensure the version is compatible -->
     </dependency>
+
 
     <!-- JUnit -->
     <dependency>
@@ -41,6 +41,34 @@
       <artifactId>junit-jupiter</artifactId>
       <version>${junit.version}</version>
       <scope>test</scope>
+    </dependency>
+
+    <!-- Jersey core -->
+    <dependency>
+      <groupId>org.glassfish.jersey.core</groupId>
+      <artifactId>jersey-server</artifactId>
+      <version>3.1.2</version>
+    </dependency>
+
+    <!-- Jersey servlet container -->
+    <dependency>
+      <groupId>org.glassfish.jersey.containers</groupId>
+      <artifactId>jersey-container-servlet</artifactId>
+      <version>3.1.2</version>
+    </dependency>
+
+    <!-- HK2 dependency injection -->
+    <dependency>
+      <groupId>org.glassfish.jersey.inject</groupId>
+      <artifactId>jersey-hk2</artifactId>
+      <version>3.1.2</version>
+    </dependency>
+
+    <!-- JSON support -->
+    <dependency>
+      <groupId>org.glassfish.jersey.media</groupId>
+      <artifactId>jersey-media-json-binding</artifactId>
+      <version>3.1.2</version>
     </dependency>
   </dependencies>
 
