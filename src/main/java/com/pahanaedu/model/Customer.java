@@ -75,6 +75,19 @@ public class Customer implements Serializable {
         return unitsConsumed;
     }
 
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "accountNo=" + accountNo +
+                ", name='" + name + '\'' +
+                ", address1='" + address1 + '\'' +
+                ", address2='" + address2 + '\'' +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+                ", unitsConsumed=" + unitsConsumed +
+                '}';
+    }
+
     public void setUnitsConsumed(int unitsConsumed) {
         this.unitsConsumed = unitsConsumed;
     }

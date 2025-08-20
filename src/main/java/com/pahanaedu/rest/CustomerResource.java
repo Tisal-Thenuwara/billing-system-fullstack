@@ -15,6 +15,7 @@ public class CustomerResource {
 
     private final CustomerDAO dao = new CustomerDAO();
 
+    @Path("/save")
     @POST
     public Response add(Customer c) {
         boolean ok = dao.add(c);
@@ -48,5 +49,17 @@ public class CustomerResource {
     @GET
     public List<Customer> list() {
         return dao.listAll();
+    }
+
+    @DELETE
+    @Path("/{accountNo}")
+    public Response delete(@PathParam("accountNo") int accountNo) {
+        boolean ok = dao.delete(accountNo);
+        if (ok) {
+            return Response.ok("{\"message\":\"Customer deleted successfully\"}").build();
+        } 
+        return Response.status(Response.Status.BAD_REQUEST)
+                .entity("{\"error\":\"Could not delete customer\"}")
+                .build();
     }
 }
