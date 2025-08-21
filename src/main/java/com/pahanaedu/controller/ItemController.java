@@ -1,4 +1,4 @@
-package com.pahanaedu.rest;
+package com.pahanaedu.controller;
 
 import com.pahanaedu.dao.ItemDAO;
 import com.pahanaedu.model.Item;
@@ -11,7 +11,7 @@ import java.util.List;
 @Path("/items")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class ItemResource {
+public class ItemController {
     private final ItemDAO dao = new ItemDAO();
 
     @POST
