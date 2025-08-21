@@ -8,45 +8,47 @@
 </head>
 <body>
 <button class="back-btn" onclick="location.href='dashboard.jsp'">← Back</button>
-<div class="card">
-  <h2>Customer Management</h2>
+<div class="container">
+  <div class="card">
+    <h2>Customer Management</h2>
 
-  <!-- Add Customer Form -->
-  <form>
-    <input type="text" id="acc" placeholder="Account Number" disabled>
-    <input type="text" id="fName" placeholder="Name" required>
-    <input type="text" id="addr1" placeholder="Address Line 1" required>
-    <input type="text" id="addr2" placeholder="Address Line 2" required>
-    <input type="text" id="phone" placeholder="Telephone" required>
-    <input type="text" id="email" placeholder="Email" required>
-    <input type="text" id="units" placeholder="Units Consumed">
-    <br>
-    <button type="button" id="saveBtn" onclick="add()">Save Customer</button>
-    <button type="button" id="updateBtn" style="display: none; justify-content: center" onclick="update()">Update</button>
+    <!-- Add Customer Form -->
+    <form>
+      <input type="text" id="acc" placeholder="Account Number" disabled>
+      <input type="text" id="fName" placeholder="Name" required>
+      <input type="text" id="addr1" placeholder="Address Line 1" required>
+      <input type="text" id="addr2" placeholder="Address Line 2" required>
+      <input type="text" id="phone" placeholder="Telephone" required>
+      <input type="text" id="email" placeholder="Email" required>
+      <input type="text" id="units" placeholder="Units Consumed">
+      <br>
+      <button type="button" id="saveBtn" onclick="add()">Save Customer</button>
+      <button type="button" id="updateBtn" style="display: none; justify-content: center" onclick="update()">Update
+      </button>
 
-  </form>
-<%--  <button onclick="loadList()">Load All Customers</button>--%>
-  <hr>
+    </form>
+    <%--  <button onclick="loadList()">Load All Customers</button>--%>
+    <hr>
 
-  <!-- Customer Table -->
-  <table>
-    <thead>
-    <tr>
-      <th>Account No</th>
-      <th>Name</th>
-      <th>Address Line 1</th>
-      <th>Address Line 2</th>
-      <th>Telephone</th>
-      <th>Email</th>
-      <th>Units</th>
-      <th>Actions</th>
-    </tr>
-    </thead>
-    <tbody>
-    </tbody>
-  </table>
+    <!-- Customer Table -->
+    <table>
+      <thead>
+      <tr>
+        <th>Account No</th>
+        <th>Name</th>
+        <th>Address Line 1</th>
+        <th>Address Line 2</th>
+        <th>Telephone</th>
+        <th>Email</th>
+        <th>Units</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </div>
 </div>
-
 <script>
 
   async function add(){

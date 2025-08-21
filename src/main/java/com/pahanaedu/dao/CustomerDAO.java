@@ -3,7 +3,10 @@ package com.pahanaedu.dao;
 import com.pahanaedu.model.Customer;
 import com.pahanaedu.util.DBUtil;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -13,7 +16,6 @@ public class CustomerDAO {
     private static final Logger logger = Logger.getLogger(CustomerDAO.class.getName());
 
     public boolean add(Customer c) {
-        logger.info("Adding customer: " + c.toString());
 
         String sql = "INSERT INTO customers(name,address1, address2, phone, email, units_consumed) VALUES(?,?,?,?,?,?)";
         try (Connection con = DBUtil.getConnection();
@@ -66,6 +68,19 @@ public class CustomerDAO {
             ps.setString(5, c.getEmail());
             ps.setInt(6, c.getUnitsConsumed());
             ps.setInt(7, c.getAccountNo());
+            return ps.executeUpdate() == 1;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public boolean updateUnits(int accountNo, int unitsConsumed) {
+        String sql = "UPDATE customers SET units_consumed=? WHERE account_no=?";
+        try (Connection con = DBUtil.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, unitsConsumed);
+            ps.setInt(2, accountNo);
             return ps.executeUpdate() == 1;
         } catch (SQLException e) {
             e.printStackTrace();

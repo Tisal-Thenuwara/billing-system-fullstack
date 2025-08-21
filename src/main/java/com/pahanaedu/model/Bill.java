@@ -4,19 +4,42 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 
 public class Bill implements Serializable {
+    private int billId;
     private int accountNo;
+    private int itemId;
     private int units;
-    private BigDecimal pricePerUnit;
     private BigDecimal total;
+    private BigDecimal pricePerUnit;
+
 
     public Bill(){}
 
-    public Bill(int accountNo, int units, BigDecimal pricePerUnit) {
+    public Bill(int billId, int accountNo, int itemId, int units, BigDecimal total, BigDecimal pricePerUnit) {
+        this.billId = billId;
         this.accountNo = accountNo;
+        this.itemId = itemId;
         this.units = units;
+        this.total = total;
         this.pricePerUnit = pricePerUnit;
-        this.total = pricePerUnit.multiply(new BigDecimal(units));
     }
+
+    public int getBillId() {
+        return billId;
+    }
+
+    public void setBillId(int billId) {
+        this.billId = billId;
+    }
+
+
+    public int getItemId() {
+        return itemId;
+    }
+
+    public void setItemId(int itemId) {
+        this.itemId = itemId;
+    }
+
 
     public int getAccountNo() { return accountNo; }
     public void setAccountNo(int accountNo) { this.accountNo = accountNo; }

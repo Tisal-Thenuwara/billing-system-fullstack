@@ -1,4 +1,4 @@
-package com.pahanaedu.rest;
+package com.pahanaedu.controller;
 
 import com.pahanaedu.dao.CustomerDAO;
 import com.pahanaedu.model.Customer;
@@ -11,7 +11,7 @@ import java.util.List;
 @Path("/customers")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class CustomerResource {
+public class CustomerController {
 
     private final CustomerDAO dao = new CustomerDAO();
 
