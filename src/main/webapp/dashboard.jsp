@@ -19,6 +19,8 @@
     <div class="tile-container">
       <div class="tile" onclick="location.href='customers.jsp'">Customers</div>
       <div class="tile" onclick="location.href='items.jsp'">Items</div>
+      <div class="tile" onclick="location.href='bill.jsp'">Generate Bills</div>
+      <div class="tile" onclick="location.href='transaction.jsp'">Transaction History</div>
       <div class="tile" onclick="location.href='help.jsp'">Help</div>
     </div>
     <br>

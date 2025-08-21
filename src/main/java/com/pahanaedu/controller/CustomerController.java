@@ -1,4 +1,4 @@
-package com.pahanaedu.rest;
+package com.pahanaedu.controller;
 
 import com.pahanaedu.dao.CustomerDAO;
 import com.pahanaedu.model.Customer;
@@ -11,10 +11,11 @@ import java.util.List;
 @Path("/customers")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class CustomerResource {
+public class CustomerController {
 
     private final CustomerDAO dao = new CustomerDAO();
 
+    @Path("/save")
     @POST
     public Response add(Customer c) {
         boolean ok = dao.add(c);
@@ -48,5 +49,17 @@ public class CustomerResource {
     @GET
     public List<Customer> list() {
         return dao.listAll();
+    }
+
+    @DELETE
+    @Path("/{accountNo}")
+    public Response delete(@PathParam("accountNo") int accountNo) {
+        boolean ok = dao.delete(accountNo);
+        if (ok) {
+            return Response.ok("{\"message\":\"Customer deleted successfully\"}").build();
+        } 
+        return Response.status(Response.Status.BAD_REQUEST)
+                .entity("{\"error\":\"Could not delete customer\"}")
+                .build();
     }
 }

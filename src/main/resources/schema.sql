@@ -20,6 +20,17 @@ CREATE TABLE IF NOT EXISTS items (
     price_per_unit DECIMAL(10,2) NOT NULL
 );
 
+CREATE TABLE IF NOT EXISTS bills
+(
+    bill_id        INT AUTO_INCREMENT PRIMARY KEY,
+    account_no     INT            NOT NULL,
+    item_id        INT            NOT NULL,
+    units          INT            NOT NULL,
+    total          DECIMAL(10, 2) NOT NULL,
+    price_per_unit DECIMAL(10, 2) NOT NULL,
+    FOREIGN KEY (account_no) REFERENCES customers (account_no),
+    FOREIGN KEY (item_id) REFERENCES items (item_id)
+);
 -- Seed a default user (change password in production)
 INSERT INTO users(username,password,role) VALUES('admin','admin','ADMIN')
 ON DUPLICATE KEY UPDATE username=username;

@@ -12,6 +12,7 @@
     <form id="loginForm">
       <input type="text" placeholder="Username" name="username" id="username" required>
       <input type="password" placeholder="Password" name="password" id="password" required>
+        <br>
       <button type="button" id="loginButton">Login</button>
     </form>
 </div>
