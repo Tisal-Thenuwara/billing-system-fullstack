@@ -24,7 +24,7 @@
       <div class="tile" onclick="location.href='help.jsp'">Help</div>
     </div>
     <br>
-    <button class="back-btn" onclick="location.href='login.html'">Logout</button>
+    <button class="back-btn" onclick="location.href='index.jsp'">Logout</button>
   </div>
 </div>
 </body>
